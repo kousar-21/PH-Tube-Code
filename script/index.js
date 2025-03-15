@@ -1,6 +1,19 @@
 
 // console.log("index is conected")
 
+// show loader function
+const showLoading=()=>{
+    document.getElementById("loader").classList.remove('hidden');
+    document.getElementById('vid-container').classList.add('hidden')
+}
+// show loader function hide kora
+const hideLoading=()=>{
+    document.getElementById("loader").classList.add('hidden');
+    document.getElementById('vid-container').classList.remove('hidden')
+}
+
+
+
 
 function loadCategories(){
 
@@ -65,6 +78,16 @@ function displayCategories(categories){
 
   
 }
+
+
+
+document.getElementById("search-input").addEventListener("keyup", (search)=>{
+    const input = search.target.value;
+    // console.log(input)
+    loadVideos(input);
+})
+
+
 
 loadCategories()
 

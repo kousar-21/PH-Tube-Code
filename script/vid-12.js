@@ -1,8 +1,15 @@
 
 
-function loadVideos(){
+function loadVideos(searchText = ""){
+
+    // show loader call
+    showLoading()
+
+
+
+
     // 1- fetch the data
-    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
 
      // 2- convert promise to json
     .then(response => response.json())
@@ -92,6 +99,10 @@ const dispalyVideos = (vidios) => {
             </div>
             `;
 
+            // sob  gula funtion call korle hide loader er use
+            hideLoading()
+
+
             return;
          }
  
@@ -122,7 +133,9 @@ const dispalyVideos = (vidios) => {
                 </div>
                 <div class="intro">
                     <h2 class="text-sm font-semibold">${video.title}</h2>
-                    <p class="text-gray-400 flex gap-2">${video.authors[0].profile_name}<img class="w-5 h-5" src="https://img.icons8.com/?size=64&id=6xO3fnY41hu2&format=png" alt=""></p>
+                    <p class="text-gray-400 flex gap-2">${video.authors[0].profile_name}
+                     ${video.authors[0].verified == true ? `<img class="w-5 h-5" src="https://img.icons8.com/?size=64&id=6xO3fnY41hu2&format=png" alt="">` : `` }</p>
+                    
                     <p class="text-gray-400">${video.others.views} views</p>
                 </div>
             </div>
@@ -132,11 +145,17 @@ const dispalyVideos = (vidios) => {
         </div>
 
         `
+        // Verified ki na check korar jonno Ternary Operator use kora hoice
 
 
         // 7- Append the Element
         videoContainer.appendChild(videoCard)
     });
+
+
+    // sob  gula funtion call korle hide loader er use
+    hideLoading()
+
 }
 
 

@@ -20,6 +20,12 @@ function removeActiveClass(){
 
 
 const loadCategoryVid = (id) => {
+
+
+    // show loader call
+    showLoading()
+
+
     const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`
     console.log(url)
 
